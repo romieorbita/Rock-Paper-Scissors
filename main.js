@@ -22,6 +22,7 @@ function computerPlay(){
 // takes in two parameters playerSelection and computerSelection
 function playRound(playerSelection, computerSelection){
     playerSelection = playerSelection.toString().toLowerCase();
+    computerSelection = computerPlay();
     if (playerSelection === 'rock' && computerSelection === 'Paper'){
         return console.log("Player Wins! Rock beats Paper!")
     }
@@ -36,18 +37,25 @@ function playRound(playerSelection, computerSelection){
     }
 
 }
-const playerSelection = "Rock";
-const computerSelection = computerPlay();
-
 // returns a String that declares the winner like so: "You Lose! Paper beats Rock"
-
-
 // singleRound function takes in playerSelection and computerSelection
 // if playerSelection is Rock && computerSelection is Paper == playerSelection wins
 // else if playerSelection is Scissors && computerSelection is Paper == playerSelection wins
 // else if playerSelection is Paper && computerSelection is Rock == playerSelection wins
 // else if playerSelection === computerSelection == tie!
 // else computerSelection wins
+
+
+function game(){
+    for (let i = 0; i<=5; i++){
+        let playerDecision = prompt("Rock Paper or Scissors?");
+        playRound(playerDecision);
+    }
+
+}
+
+game();
+
 
 
 
