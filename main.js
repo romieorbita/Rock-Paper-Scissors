@@ -1,7 +1,7 @@
-//Function called computerPlay that will **randomly** return Rock, Paper or Scissors
+
 let computer = '';
 function computerPlay(){
-    // ---use math.random that outputs number from 1-3 1==Rock, 2==Paper 3==Scissors
+ 
     let picker = Math.floor(Math.random() * 3);
     if (picker == 1){
         return computer = "Rock";
@@ -15,13 +15,9 @@ function computerPlay(){
 
 }
 
-
-
-
-// Write a Function that plays a single round of RPS
-// takes in two parameters playerSelection and computerSelection
+/*
 function playRound(playerSelection, computerSelection){
-    playerSelection = playerSelection.toString().toLowerCase();
+    //playerSelection = playerSelection.toString().toLowerCase();
     computerSelection = computerPlay();
     if (playerSelection === 'rock' && computerSelection === 'Paper'){
         return console.log("Player Wins! Rock beats Paper!")
@@ -37,25 +33,70 @@ function playRound(playerSelection, computerSelection){
     }
 
 }
-// returns a String that declares the winner like so: "You Lose! Paper beats Rock"
-// singleRound function takes in playerSelection and computerSelection
-// if playerSelection is Rock && computerSelection is Paper == playerSelection wins
-// else if playerSelection is Scissors && computerSelection is Paper == playerSelection wins
-// else if playerSelection is Paper && computerSelection is Rock == playerSelection wins
-// else if playerSelection === computerSelection == tie!
-// else computerSelection wins
+*/
 
+let buttons = document.querySelector('#buttons');
+let rock = document.createElement('button');
+rock.textContent = 'Rock';
+buttons.appendChild(rock);
 
-function game(){
-    for (let i = 0; i<=5; i++){
-        let playerDecision = prompt("Rock Paper or Scissors?");
-        playRound(playerDecision);
+let paper = document.createElement('button');
+paper.textContent = 'Paper';
+buttons.appendChild(paper);
+
+let scissors = document.createElement('button');
+scissors.textContent = 'Scissors';
+buttons.appendChild(scissors);
+
+let results = document.createElement('div');
+results.textContent = "results: ";
+buttons.appendChild(results);
+
+function rockClicked(e){
+    let computerSelection = computerPlay();
+    if (computerSelection == 'Paper'){
+        console.log('Computer Wins! Paper beats Rock');
     }
-
+    else if(computerSelection == 'Scissors'){
+        console.log('Player Wins! Rock beats Scissors');
+    }
+    else{
+        console.log('its a tie! both picked rock');
+    }
+   
 }
 
-game();
+function paperClicked(e){
+    let computerSelection = computerPlay();
+    if (computerSelection == 'Rock'){
+        console.log('Player Wins! paper beats rock!');
+    }
+    else if(computerSelection == 'Scissors'){
+        console.log('Computer Wins! scissors beats paper!');
+    }
+    else{
+        console.log('its a tie! both picked paper');
+    }
+}
 
+function scissorsClicked(e){
+    let computerSelection = computerPlay();
+    if (computerSelection == 'Paper'){
+        console.log('Player Wins! scissors beats paper!');
+    }
+    else if(computerSelection == 'Rock'){
+        console.log('Computer Wins! rock beats scissors!');
+    }
+    else{
+        console.log('its a tie! both picked scissors');
+    }
+}
+
+rock.addEventListener('click', rockClicked);
+
+paper.addEventListener('click', paperClicked);
+
+scissors.addEventListener('click', scissorsClicked);
 
 
 
