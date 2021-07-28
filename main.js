@@ -51,13 +51,35 @@ let computerCounter = document.getElementById("computerScore");
 
 
 function incrementPlayer(){
-    playerCount ++;
-    playerCounter.innerHTML = 'Player Score: ' + playerCount;
+    if (playerCount == 5){
+        alert("Congratulations Player, You have won!")
+        playerCount = 0;
+        computerCount = 0;
+        playerCounter.innerHTML = 'Player Score: ' + playerCount;
+        computerCounter.innerHTML = 'Computer Score: ' + computerCount;
+    }
+    else{
+        playerCount ++;
+        playerCounter.innerHTML = 'Player Score: ' + playerCount;
+        
+    }
 }
 
 function incrementComputer(){
-    computerCount ++;
-    computerCounter.innerHTML = 'Computer Score: ' + computerCount;
+    
+    if (computerCount == 5){
+        alert("Congratulations Computer, You have won!");
+        playerCount = 0;
+        computerCount = 0;
+        playerCounter.innerHTML = 'Player Score: ' + playerCount;
+        computerCounter.innerHTML = 'Computer Score: ' + computerCount;
+    }
+    else{
+        computerCount ++;
+        computerCounter.innerHTML = 'Computer Score: ' + computerCount;
+        
+
+    }
 }
 
 
