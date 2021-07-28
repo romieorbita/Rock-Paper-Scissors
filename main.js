@@ -15,26 +15,6 @@ function computerPlay(){
 
 }
 
-/*
-function playRound(playerSelection, computerSelection){
-    //playerSelection = playerSelection.toString().toLowerCase();
-    computerSelection = computerPlay();
-    if (playerSelection === 'rock' && computerSelection === 'Paper'){
-        return console.log("Player Wins! Rock beats Paper!")
-    }
-    else if(playerSelection === 'scissors' && computerSelection === 'Paper'){
-        return console.log ("PLayer Wins! Scissors beats Paper!");
-    }
-    else if (playerSelection === 'paper' && computerSelection === 'Rock'){
-        return console.log ("Player Wins! Paper beats Rock!");
-    }
-    else{
-        return console.log("Computer Wins!");
-    }
-
-}
-*/
-
 let buttons = document.querySelector('#buttons');
 let rock = document.createElement('button');
 rock.textContent = 'Rock';
@@ -52,13 +32,47 @@ let results = document.createElement('div');
 results.textContent = "results: ";
 buttons.appendChild(results);
 
+
+let playerScore = document.createElement('p');
+playerScore.setAttribute('id','playerScore');
+playerScore.textContent = "0";
+buttons.appendChild(playerScore);
+
+let computerScore = document.createElement('p');
+computerScore.setAttribute('id', 'computerScore');
+computerScore.textContent = '0';
+buttons.appendChild(computerScore);
+
+let playerCount = 0;
+let computerCount = 0;
+
+let playerCounter = document.getElementById("playerScore");
+let computerCounter = document.getElementById("computerScore");
+
+
+function incrementPlayer(){
+    playerCount ++;
+    playerCounter.innerHTML = 'Player Score: ' + playerCount;
+}
+
+function incrementComputer(){
+    computerCount ++;
+    computerCounter.innerHTML = 'Computer Score: ' + computerCount;
+}
+
+
+
 function rockClicked(e){
     let computerSelection = computerPlay();
     if (computerSelection == 'Paper'){
         console.log('Computer Wins! Paper beats Rock');
+        incrementComputer()
+        
+
     }
     else if(computerSelection == 'Scissors'){
         console.log('Player Wins! Rock beats Scissors');
+        incrementPlayer();
     }
     else{
         console.log('its a tie! both picked rock');
@@ -70,12 +84,17 @@ function paperClicked(e){
     let computerSelection = computerPlay();
     if (computerSelection == 'Rock'){
         console.log('Player Wins! paper beats rock!');
+        incrementPlayer();
+       
     }
     else if(computerSelection == 'Scissors'){
         console.log('Computer Wins! scissors beats paper!');
+        incrementComputer()
+       
     }
     else{
         console.log('its a tie! both picked paper');
+
     }
 }
 
@@ -83,9 +102,13 @@ function scissorsClicked(e){
     let computerSelection = computerPlay();
     if (computerSelection == 'Paper'){
         console.log('Player Wins! scissors beats paper!');
+        incrementPlayer();
+         
     }
     else if(computerSelection == 'Rock'){
         console.log('Computer Wins! rock beats scissors!');
+        incrementComputer()
+        
     }
     else{
         console.log('its a tie! both picked scissors');
